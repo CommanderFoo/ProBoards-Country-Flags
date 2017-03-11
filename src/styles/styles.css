@@ -21,12 +21,23 @@
 
 }
 
-.country-flags-mini-profile span {
+.country-flags-mini-profile span, .country-flags-profile span {
 
 	width: 96px;
 	height: 64px;
 	display: inline-block;
+
+}
+
+.country-flags-mini-profile span {
+
 	margin-top: 8px;
+
+}
+
+.country-flags-profile {
+
+	margin-left: 10px;
 
 }
 

@@ -55,6 +55,8 @@ var Country_Flags = function () {
 				if (pb.data("user").is_logged_in && pb.data("user").id == pb.data("page").member.id) {
 					new Country_Flags_Button();
 				}
+
+				new Country_Flags_Profile();
 			}
 
 			var location_check = pb.data("route").name == "search_results" || pb.data("route").name == "conversation" || pb.data("route").name == "list_messages" || pb.data("route").name == "thread" || pb.data("route").name == "list_posts" || pb.data("route").name == "permalink" || pb.data("route").name == "all_recent_posts" || pb.data("route").name == "recent_posts" || pb.data("route").name == "posts_by_ip";
@@ -203,7 +205,6 @@ var Country_Flags_Mini_Profile = function () {
 	function Country_Flags_Mini_Profile() {
 		_classCallCheck(this, Country_Flags_Mini_Profile);
 
-		this.using_custom = false;
 		this.add_flag_to_mini_profile();
 
 		pb.events.on("afterSearch", this.add_flag_to_mini_profile.bind(this));
@@ -212,8 +213,6 @@ var Country_Flags_Mini_Profile = function () {
 	_createClass(Country_Flags_Mini_Profile, [{
 		key: "add_flag_to_mini_profile",
 		value: function add_flag_to_mini_profile() {
-			var _this2 = this;
-
 			var $mini_profiles = $(".item .mini-profile");
 
 			if (!$mini_profiles.length) {
@@ -254,9 +253,7 @@ var Country_Flags_Mini_Profile = function () {
 						return;
 					}
 
-					if ($elem.length) {
-						_this2.using_custom = true;
-					} else {
+					if (!$elem.length) {
 						using_info = true;
 						$elem = $("<div class='country-flags-mini-profile'></div>");
 					}
@@ -283,6 +280,53 @@ var Country_Flags_Mini_Profile = function () {
 }();
 
 ;
+
+var Country_Flags_Profile = function () {
+	function Country_Flags_Profile() {
+		_classCallCheck(this, Country_Flags_Profile);
+
+		this.add_flag_to_profile();
+	}
+
+	_createClass(Country_Flags_Profile, [{
+		key: "add_flag_to_profile",
+		value: function add_flag_to_profile() {
+			var user_id = pb.data("page").member.id;
+			var data = pb.plugin.key(Country_Flags.PLUGIN_KEY).get(user_id);
+			var selected_id = -1;
+
+			if (data && data.length) {
+				if (parseInt(data, 10) >= 0 && parseInt(data, 10) < 250) {
+					selected_id = parseInt(data, 10);
+				}
+			}
+
+			if (selected_id == -1) {
+				return;
+			}
+
+			var html = "";
+
+			html += "<span style='background-image: url(\"" + Country_Flags.images.flags + "\"); background-position: 0px -" + selected_id * 64 + "px;'> </span>";
+
+			var using_custom = true;
+			var $elem = $(".country-flags-profile");
+
+			if (!$elem.length) {
+				$elem = $("<div class='country-flags-profile float-right'></div>");
+				using_custom = false;
+			}
+
+			$elem.html(html);
+
+			if (!using_custom) {
+				$elem.insertBefore($(".name_and_group"));
+			}
+		}
+	}]);
+
+	return Country_Flags_Profile;
+}();
 
 
 Country_Flags.init();

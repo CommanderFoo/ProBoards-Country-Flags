@@ -18,6 +18,8 @@ class Country_Flags {
 			if(pb.data("user").is_logged_in && pb.data("user").id == pb.data("page").member.id){
 				new Country_Flags_Button();
 			}
+
+			new Country_Flags_Profile();
 		}
 
 		let location_check = (

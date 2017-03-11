@@ -1,7 +1,6 @@
 class Country_Flags_Mini_Profile {
 
 	constructor(){
-		this.using_custom = false;
 		this.add_flag_to_mini_profile();
 
 		pb.events.on("afterSearch", this.add_flag_to_mini_profile.bind(this));
@@ -48,9 +47,7 @@ class Country_Flags_Mini_Profile {
 					return;
 				}
 
-				if($elem.length){
-					this.using_custom = true;
-				} else {
+				if(!$elem.length){
 					using_info = true;
 					$elem = $("<div class='country-flags-mini-profile'></div>");
 				}
