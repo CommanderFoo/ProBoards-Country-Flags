@@ -1,0 +1,77 @@
+.ui-dialog.country-flags-dialog {
+
+	position: fixed !important;
+
+}
+
+.ui-dialog.country-flags-dialog .ui-dialog-content {
+
+	text-align: center;
+
+}
+
+.ui-dialog.country-flags-dialog span.country-flags-item {
+
+	width: 96px;
+	height: 64px;
+	display: inline-block;
+	margin: 4px;
+	padding: 0px;
+	cursor: pointer;
+
+}
+
+.country-flags-mini-profile span {
+
+	width: 96px;
+	height: 64px;
+	display: inline-block;
+	margin-top: 8px;
+
+}
+
+.country-flags-mini-profile {
+
+	text-align: center;
+
+}
+
+.ui-dialog.country-flags-dialog span.country-flags-item {
+
+	cursor: pointer;
+
+}
+
+.ui-dialog.country-flags-dialog span.country-flags-item-selected {
+
+	box-shadow: 0 0 0 4px black;
+	border-radius: 4px;
+	animation-duration: 1s;
+	animation-name: flags_animate_border;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+
+
+}
+
+@keyframes flags_animate_border {
+
+	0% {
+		box-shadow: 0 0 0 4px black;
+	}
+
+	50% {
+		box-shadow: 0 0 0 4px red;
+	}
+
+	100% {
+		box-shadow: 0 0 0 4px black;
+	}
+}
+
+.ui-dialog.country-flags-dialog span.country-flags-item:hover {
+
+	box-shadow: 0 0 0 4px black;
+	border-radius: 4px;
+
+}
