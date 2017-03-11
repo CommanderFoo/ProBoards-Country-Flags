@@ -45,7 +45,13 @@ class Country_Flags_Button {
 									value: parseInt(this.selected.id, 10),
 									object_id: pb.data("user").id
 
-								})
+								});
+
+								let $div = $(".country-flags-profile");
+
+								if($div.length && $div.find("span").length == 1){
+									$div.find("span").css("background-position-y", -(parseInt(this.selected.id, 10) * 64) + "px");
+								}
 							}
 
 							this.flag_dialog.dialog("close");

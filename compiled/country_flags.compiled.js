@@ -132,6 +132,12 @@ var Country_Flags_Button = function () {
 									object_id: pb.data("user").id
 
 								});
+
+								var $div = $(".country-flags-profile");
+
+								if ($div.length && $div.find("span").length == 1) {
+									$div.find("span").css("background-position-y", -(parseInt(_this.selected.id, 10) * 64) + "px");
+								}
 							}
 
 							_this.flag_dialog.dialog("close");
