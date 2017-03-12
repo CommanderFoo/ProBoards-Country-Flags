@@ -7,7 +7,6 @@ class Country_Flags {
 		this.images = {};
 		this.settings = {};
 
-		//this.api.init();
 		this.setup();
 
 		$(this.ready.bind(this));
